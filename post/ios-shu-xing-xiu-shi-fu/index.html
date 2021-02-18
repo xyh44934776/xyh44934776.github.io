@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta content="yes" name="apple-mobile-web-app-capable" />
+  <meta content="black" name="apple-mobile-web-app-status-bar-style" />
+  <meta name="referrer" content="never">
+  <meta name="keywords" content="">
+  <meta name="description" content="">
+  <meta name="author" content="kveln">
+  <title>iOS属性修饰符 | Sanri&#39;s Blog</title>
+  <link href="https://cdn.bootcss.com/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+  <!-- <link href="https://xyh44934776.github.io/media/css/bootstrap.min.css" rel="stylesheet"> -->
+  <!--  <link href="https://xyh44934776.github.io/media/css/all.min.css" rel="stylesheet" type="text/css"> -->
+  <link href="https://cdn.bootcss.com/font-awesome/5.11.2/css/all.min.css" rel="stylesheet">
+  <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+  <link rel="alternate" type="application/rss+xml" title="iOS属性修饰符 | Sanri&#39;s Blog » Feed" href="https://xyh44934776.github.io/atom.xml">
+  <link rel="stylesheet"href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.15.10/build/styles/androidstudio.min.css">
+  <link href="https://xyh44934776.github.io/styles/main.css" rel="stylesheet">
+  <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.15.10/build/highlight.min.js"></script>
+  <!-- <script src="https://xyh44934776.github.io/media/scripts/jquery.min.js"></script> -->
+  <script>hljs.initHighlightingOnLoad();</script>
+  
+
+    <meta property="og:description" content="iOS属性修饰符"/>
+    <meta property="og:url" content="https://xyh44934776.github.io/post/ios-shu-xing-xiu-shi-fu/"/>
+    <meta property="og:locale" content="zh-CN"/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:site_name" content="Sanri&#39;s Blog"/>
+  </head>
+  <body>
+  	<!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+    <div class="container">
+      <a class="navbar-brand" href="https://xyh44934776.github.io">Sanri&#39;s Blog</a>
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        Menu
+        <i class="fas fa-bars"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          
+          <li class="nav-item">
+              
+              <a class="nav-link" href="/">首页</a>
+              
+          </li>
+          
+          <li class="nav-item">
+              
+              <a class="nav-link" href="/tags">标签</a>
+              
+          </li>
+          
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!-- Page Header -->
+  <header class="masthead" style="background-image: url('https://xyh44934776.github.io/media/images/home-bg.jpg')">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="post-heading">
+          	<span class="tags">
+          	 
+        </span>
+            <h1>iOS属性修饰符</h1>
+            <span class="meta">
+            	Posted on
+              2020-08-12，3 min read
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Post Content -->
+  <article>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <p>ARC中有5个参数<br>
+1.assign<br>
+2.strong<br>
+3.unsafe_unretained<br>
+4.copy<br>
+5.weak</p>
+<p>MRC中的retain</p>
+<h1 id="assign">assign</h1>
+<p>assign一般用于非对象类型，直接为值拷贝，对引用计数不会影响。也可以用在对象类型，但是一旦对象被其他地方销毁掉，那就会成为野指针，造成程序崩溃。</p>
+<h1 id="strong">strong</h1>
+<p>strong类似在ARC情况的retain，会增加引用计数，只能用于对象类型。strong的特点是，用strong修饰的对象，只要有一个strong类型的指针引用，系统就不会出发改对象的dealloc。</p>
+<h1 id="unsafe_unretained">unsafe_unretained</h1>
+<p>unsafe_unretained用于对象类型，不会影响对象的引用计数。特点是，当修饰的对象被销毁掉后，该指针就会成为野指针。之所以存在这个属性是因为，这个引用的属性在内存管理的效率高于weak。用的时候需要注意这个指针指向的对象销毁掉后，其他的地方需要保证不能在使用这个指针。</p>
+<h1 id="copy">copy</h1>
+<p>copy用于对象类型，常用于Block和String。而Block和String两者都可以用与Copu和Strong修饰。Block用strong修饰和copy是一样的效果，内部实现均进行了copy，copy后Block会从栈区拷贝到堆区。String可用Strong也可用Copy修饰，主要是场景不同，strong修饰的String不会产生新对象和新指针，因此如果原先的对象被修改，此时指向的对象也会受到影响，如果有类似需求可以用strong修饰。而copy对于NSString来说和strong也十分类似，但是如果赋值时传入的是MutablString则不同，用与copy修饰后，会深拷贝一个不可变对象出来，因此这个对象不会受到原先对象改变的影响。</p>
+<h1 id="weak">weak</h1>
+<p>weak与assign十分类似，也不会增加对象的引用计数，相当直接获取到了对象的引用。不同的是，weak用对象类型，不能用与非对象类型。而weak引用的对象如果在其他地方被销毁掉后，此时的weak不会变成野指针，而是被自动的置为nil。</p>
+<h1 id="retain">retain</h1>
+<p>retain与copy相似，但是不同的是，copy是实现了拷贝，重新成了一个对象并使引用计数+1，而retain是直接使原来的对象引用计数+1。</p>
+<p>在看YYCache的原理时发现，在实现LRU算法的同时，对属性使用的是unsafe_unretained，而没有使用weak。原因是，在读取weak属性时，系统内部会调用objc_loadWeak()和objc_storeWeak()方法，这会具有额外的开销。因此，如果在需要性能的时候，应该使用unsafe_unretained，在需要安全稳定简单的时候使用weak。</p>
+
+          
+          <p class="next-post">下一篇：
+            <a href="https://xyh44934776.github.io/post/ios-bian-yi/">
+              <span class="post-title">
+                iOS编译&rarr;
+              </span>
+            </a>
+          </p>
+        
+        <div class="comment">
+          
+        </div>
+      </div>
+    </div>
+  </article>
+ <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <ul class="list-inline text-center">
+            
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+              <li class="list-inline-item">
+              <a href="https://xyh44934776.github.io/atom.xml" target="_blank">
+                <span class="fa-stack fa-lg">
+                  <i class="fas fa-circle fa-stack-2x"></i>
+                  <i class="fas fa-rss fa-stack-1x fa-inverse"></i>
+                </span>
+              </a>
+              </li>
+          </ul>
+          <p class="copyright text-muted">Copyright &copy;<span>Sanri&#39;s Blog</span><br><a href="https://github.com/getgridea/gridea" class="Themeinfo">Powered by Gridea</a></p>
+        </div>
+      </div>
+    </div>
+   </footer>
+  <!-- Bootstrap core JavaScript -->
+  <script src="https://cdn.bootcss.com/twitter-bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+  <!-- <script src="https://xyh44934776.github.io/media/scripts/bootstrap.bundle.min.js"></script> -->
+  <!-- Bootstrap core JavaScript -->
+  <script src="https://cdn.jsdelivr.net/gh/Alanrk/clean-cdn@1.0/scripts/clean-blog.min.js"></script>
+  <!-- <script src="https://xyh44934776.github.io/media/scripts/clean-blog.min.js"></script> -->
+  <script src="//instant.page/3.0.0" type="module" defer integrity="sha384-OeDn4XE77tdHo8pGtE1apMPmAipjoxUQ++eeJa6EtJCfHlvijigWiJpD7VDPWXV1"></script>
+  <style type="text/css">a.back_to_top{text-decoration:none;position:fixed;bottom:40px;right:30px;background:#f0f0f0;height:40px;width:40px;border-radius:50%;line-height:36px;font-size:18px;text-align:center;transition-duration:.5s;transition-propety:background-color;display:none}a.back_to_top span{color:#888}a.back_to_top:hover{cursor:pointer;background:#dfdfdf}a.back_to_top:hover span{color:#555}@media print,screen and(max-width:580px){.back_to_top{display:none!important}}</style>
+<a id="back_to_top" href="#" class="back_to_top">
+  <span>▲</span></a>
+<script>$(document).ready((function(_this) {
+    return function() {
+      var bt;
+      bt = $('#back_to_top');
+      if ($(document).width() > 480) {
+        $(window).scroll(function() {
+          var st;
+          st = $(window).scrollTop();
+          if (st > 30) {
+            return bt.css('display', 'block')
+          } else {
+            return bt.css('display', 'none')
+          }
+        });
+        return bt.click(function() {
+          $('body,html').animate({
+            scrollTop: 0
+          },
+          800);
+          return false
+        })
+      }
+    }
+  })(this));</script>
+  </body>
+</html>
+

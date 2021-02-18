@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta content="yes" name="apple-mobile-web-app-capable" />
+  <meta content="black" name="apple-mobile-web-app-status-bar-style" />
+  <meta name="referrer" content="never">
+  <meta name="keywords" content="">
+  <meta name="description" content="">
+  <meta name="author" content="kveln">
+  <title>Git相关指令 | Sanri&#39;s Blog</title>
+  <link href="https://cdn.bootcss.com/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+  <!-- <link href="https://xyh44934776.github.io/media/css/bootstrap.min.css" rel="stylesheet"> -->
+  <!--  <link href="https://xyh44934776.github.io/media/css/all.min.css" rel="stylesheet" type="text/css"> -->
+  <link href="https://cdn.bootcss.com/font-awesome/5.11.2/css/all.min.css" rel="stylesheet">
+  <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+  <link rel="alternate" type="application/rss+xml" title="Git相关指令 | Sanri&#39;s Blog » Feed" href="https://xyh44934776.github.io/atom.xml">
+  <link rel="stylesheet"href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.15.10/build/styles/androidstudio.min.css">
+  <link href="https://xyh44934776.github.io/styles/main.css" rel="stylesheet">
+  <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.15.10/build/highlight.min.js"></script>
+  <!-- <script src="https://xyh44934776.github.io/media/scripts/jquery.min.js"></script> -->
+  <script>hljs.initHighlightingOnLoad();</script>
+  
+
+    <meta property="og:description" content="Git相关指令"/>
+    <meta property="og:url" content="https://xyh44934776.github.io/post/git-xiang-guan-zhi-ling/"/>
+    <meta property="og:locale" content="zh-CN"/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:site_name" content="Sanri&#39;s Blog"/>
+  </head>
+  <body>
+  	<!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+    <div class="container">
+      <a class="navbar-brand" href="https://xyh44934776.github.io">Sanri&#39;s Blog</a>
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        Menu
+        <i class="fas fa-bars"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          
+          <li class="nav-item">
+              
+              <a class="nav-link" href="/">首页</a>
+              
+          </li>
+          
+          <li class="nav-item">
+              
+              <a class="nav-link" href="/tags">标签</a>
+              
+          </li>
+          
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!-- Page Header -->
+  <header class="masthead" style="background-image: url('https://xyh44934776.github.io/media/images/home-bg.jpg')">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="post-heading">
+          	<span class="tags">
+          	 
+        </span>
+            <h1>Git相关指令</h1>
+            <span class="meta">
+            	Posted on
+              2020-08-12，2 min read
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Post Content -->
+  <article>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <h1 id="删除远程分支">删除远程分支</h1>
+<p><code>git push origin --delete 分支名字</code></p>
+<h1 id="删除本地分支">删除本地分支</h1>
+<p><code>git branch -d 分支名字</code></p>
+<h1 id="创建tag">创建tag</h1>
+<p><code>git tag -a 版本号 -m '版本说明'</code></p>
+<h1 id="推送单个tag">推送单个tag</h1>
+<p><code>git push origin tag名称</code></p>
+<h1 id="推送所有tag">推送所有tag</h1>
+<pre><code>git push origin —-tag 
+或者
+git push —-tag
+</code></pre>
+<h1 id="取消本地目录下关联的远程库">取消本地目录下关联的远程库</h1>
+<p><code>git remote remove origin</code></p>
+<h1 id="在本地目录下关联远程repository">在本地目录下关联远程repository</h1>
+<p><code>git remote add origin 仓库地址</code></p>
+<h1 id="clone">clone</h1>
+<p><code>git clone 仓库地址 指定名城</code></p>
+<h1 id="恢复本地所有更改">恢复本地所有更改</h1>
+<pre><code>git checkout .
+git reset .
+</code></pre>
+<h1 id="本地分支重命名">本地分支重命名</h1>
+<p><code>git branch -m 旧分支名字 新分支名字</code></p>
+<h1 id="推送commit-之后就可以直接使用-git-push-命令来提交">推送commit ，之后就可以直接使用 git push 命令来提交</h1>
+<p><code>git push -u origin master</code></p>
+<h1 id="推送本地分支">推送本地分支</h1>
+<p><code>git push origin 分支名称</code></p>
+<h1 id="关联分支">关联分支</h1>
+<p><code>git push --set-upstream origin 分支名称</code></p>
+<h1 id="在已有分支上创建分支">在已有分支上创建分支</h1>
+<p><code>git checkout -b 分支名称</code></p>
+<h1 id="本地分支关联远程分支重置">本地分支关联远程分支重置</h1>
+<p><code>git branch --unset-upstream</code></p>
+<h1 id="本地分支关联远程分支">本地分支关联远程分支</h1>
+<p><code>git branch --set-upstream origin 本地分支名称</code></p>
+<h1 id="查看log-并带有文件修改">查看log 并带有文件修改</h1>
+<p><code>git log -p</code></p>
+<h1 id="查看log-图形化">查看log 图形化</h1>
+<p><code>git log --graph</code></p>
+<h1 id="查看当前分支log-图形化">查看当前分支log 图形化</h1>
+<p><code>git log 当前分支名称 --graph</code></p>
+<h1 id="回滚文件提交">回滚文件提交</h1>
+<pre><code>git revert 提交id （产生commit）
+Git reset --hard 提交id （直接重置，中间的记录被清除掉）
+</code></pre>
+<h1 id="创建stash">创建stash</h1>
+<pre><code>git stash
+git stash save 'stash名字'
+</code></pre>
+<h1 id="应用stash">应用stash</h1>
+<p><code>git stash apply tag的index或者stash名字</code></p>
+<h1 id="移除stash">移除stash</h1>
+<p><code>git stash drop tag的index或者stash名字</code></p>
+<h1 id="移出stash并应用">移出stash并应用</h1>
+<p><code>git stash pop tag的index或者stash名字</code></p>
+
+          
+          <p class="next-post">下一篇：
+            <a href="https://xyh44934776.github.io/post/elasticsearch-xue-xi/">
+              <span class="post-title">
+                Elasticsearch学习&rarr;
+              </span>
+            </a>
+          </p>
+        
+        <div class="comment">
+          
+        </div>
+      </div>
+    </div>
+  </article>
+ <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <ul class="list-inline text-center">
+            
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+              <li class="list-inline-item">
+              <a href="https://xyh44934776.github.io/atom.xml" target="_blank">
+                <span class="fa-stack fa-lg">
+                  <i class="fas fa-circle fa-stack-2x"></i>
+                  <i class="fas fa-rss fa-stack-1x fa-inverse"></i>
+                </span>
+              </a>
+              </li>
+          </ul>
+          <p class="copyright text-muted">Copyright &copy;<span>Sanri&#39;s Blog</span><br><a href="https://github.com/getgridea/gridea" class="Themeinfo">Powered by Gridea</a></p>
+        </div>
+      </div>
+    </div>
+   </footer>
+  <!-- Bootstrap core JavaScript -->
+  <script src="https://cdn.bootcss.com/twitter-bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+  <!-- <script src="https://xyh44934776.github.io/media/scripts/bootstrap.bundle.min.js"></script> -->
+  <!-- Bootstrap core JavaScript -->
+  <script src="https://cdn.jsdelivr.net/gh/Alanrk/clean-cdn@1.0/scripts/clean-blog.min.js"></script>
+  <!-- <script src="https://xyh44934776.github.io/media/scripts/clean-blog.min.js"></script> -->
+  <script src="//instant.page/3.0.0" type="module" defer integrity="sha384-OeDn4XE77tdHo8pGtE1apMPmAipjoxUQ++eeJa6EtJCfHlvijigWiJpD7VDPWXV1"></script>
+  <style type="text/css">a.back_to_top{text-decoration:none;position:fixed;bottom:40px;right:30px;background:#f0f0f0;height:40px;width:40px;border-radius:50%;line-height:36px;font-size:18px;text-align:center;transition-duration:.5s;transition-propety:background-color;display:none}a.back_to_top span{color:#888}a.back_to_top:hover{cursor:pointer;background:#dfdfdf}a.back_to_top:hover span{color:#555}@media print,screen and(max-width:580px){.back_to_top{display:none!important}}</style>
+<a id="back_to_top" href="#" class="back_to_top">
+  <span>▲</span></a>
+<script>$(document).ready((function(_this) {
+    return function() {
+      var bt;
+      bt = $('#back_to_top');
+      if ($(document).width() > 480) {
+        $(window).scroll(function() {
+          var st;
+          st = $(window).scrollTop();
+          if (st > 30) {
+            return bt.css('display', 'block')
+          } else {
+            return bt.css('display', 'none')
+          }
+        });
+        return bt.click(function() {
+          $('body,html').animate({
+            scrollTop: 0
+          },
+          800);
+          return false
+        })
+      }
+    }
+  })(this));</script>
+  </body>
+</html>
+

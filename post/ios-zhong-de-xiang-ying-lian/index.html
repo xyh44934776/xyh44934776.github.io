@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta content="yes" name="apple-mobile-web-app-capable" />
+  <meta content="black" name="apple-mobile-web-app-status-bar-style" />
+  <meta name="referrer" content="never">
+  <meta name="keywords" content="">
+  <meta name="description" content="">
+  <meta name="author" content="kveln">
+  <title>iOS中的响应链 | Sanri&#39;s Blog</title>
+  <link href="https://cdn.bootcss.com/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+  <!-- <link href="https://xyh44934776.github.io/media/css/bootstrap.min.css" rel="stylesheet"> -->
+  <!--  <link href="https://xyh44934776.github.io/media/css/all.min.css" rel="stylesheet" type="text/css"> -->
+  <link href="https://cdn.bootcss.com/font-awesome/5.11.2/css/all.min.css" rel="stylesheet">
+  <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+  <link rel="alternate" type="application/rss+xml" title="iOS中的响应链 | Sanri&#39;s Blog » Feed" href="https://xyh44934776.github.io/atom.xml">
+  <link rel="stylesheet"href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.15.10/build/styles/androidstudio.min.css">
+  <link href="https://xyh44934776.github.io/styles/main.css" rel="stylesheet">
+  <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.15.10/build/highlight.min.js"></script>
+  <!-- <script src="https://xyh44934776.github.io/media/scripts/jquery.min.js"></script> -->
+  <script>hljs.initHighlightingOnLoad();</script>
+  
+
+    <meta property="og:description" content="iOS中的响应链"/>
+    <meta property="og:url" content="https://xyh44934776.github.io/post/ios-zhong-de-xiang-ying-lian/"/>
+    <meta property="og:locale" content="zh-CN"/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:site_name" content="Sanri&#39;s Blog"/>
+  </head>
+  <body>
+  	<!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+    <div class="container">
+      <a class="navbar-brand" href="https://xyh44934776.github.io">Sanri&#39;s Blog</a>
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        Menu
+        <i class="fas fa-bars"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          
+          <li class="nav-item">
+              
+              <a class="nav-link" href="/">首页</a>
+              
+          </li>
+          
+          <li class="nav-item">
+              
+              <a class="nav-link" href="/tags">标签</a>
+              
+          </li>
+          
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!-- Page Header -->
+  <header class="masthead" style="background-image: url('https://xyh44934776.github.io/media/images/home-bg.jpg')">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="post-heading">
+          	<span class="tags">
+          	 
+        </span>
+            <h1>iOS中的响应链</h1>
+            <span class="meta">
+            	Posted on
+              2020-08-12，12 min read
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Post Content -->
+  <article>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <p>按照时间顺序，事件的生命周期是这样的：<br>
+事件的产生-&gt;事件的传递-&gt;事件的处理，其中重点和难点是：</p>
+<ul>
+<li>如何寻找最合适的view</li>
+<li>合适的view是如何处理的</li>
+</ul>
+<h1 id="ios中的事件">iOS中的事件</h1>
+<p>iOS中的事件可以分为3大类型：</p>
+<ul>
+<li>触摸事件</li>
+<li>加速计事件</li>
+<li>远程控制事件<br>
+这里我们只讨论iOS中的触摸事件。</li>
+</ul>
+<h2 id="响应者对象uiresponder">响应者对象(UIResponder)</h2>
+<p>学习触摸事件首先要了解一个比较重要的概念-响应者对象（UIResponder）。<br>
+在iOS中不是任何对象都能处理事件，只有继承了UIResponder的对象才能接受并处理事件，我们称之为“响应者对象”。以下都是继承自UIResponder的，所以都能接收并处理事件。</p>
+<ul>
+<li>UIApplication</li>
+<li>UIViewController</li>
+<li>UIView<br>
+那么为什么继承自UIResponder的类就能够接收并处理事件呢？<br>
+因为UIResponder中提供了以下4个对象方法来处理触摸事件。<br>
+UIResponder内部提供了以下方法来处理事件触摸事件</li>
+</ul>
+<pre><code>- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event;
+- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event;
+- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event;
+- (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event;
+加速计事件
+- (void)motionBegan:(UIEventSubtype)motion withEvent:(UIEvent *)event;
+- (void)motionEnded:(UIEventSubtype)motion withEvent:(UIEvent *)event;
+- (void)motionCancelled:(UIEventSubtype)motion withEvent:(UIEvent *)event;
+远程控制事件
+- (void)remoteControlReceivedWithEvent:(UIEvent *)event;
+</code></pre>
+<h1 id="事件的相关对象">事件的相关对象</h1>
+<p>UIView正是通过继承父类UIResponder的事件方法，从而具有了处理事件的能力。所以可以通过重写该方法来处理一些事件。</p>
+<ul>
+<li>如果两根手指同时触摸一个view，那么view只会调用一次touchesBegan:withEvent:方法，touches参数中装着2个UITouch对象。</li>
+<li>如果这两根手指一前一后分开触摸同一个view，那么view会分别调用2次touchesBegan:withEvent:方法，并且每次调用时的touches参数中只包含一个UITouch对象。</li>
+<li>重写以上四个方法，如果是处理UIView的触摸事件。必须要自定义UIView子类继承自UIView。</li>
+<li>如果是处理UIViewController的触摸事件，那么在控制器的.m文件中直接重写那四个方法即可！</li>
+</ul>
+<h2 id="uitouch对象">UITouch对象</h2>
+<ul>
+<li>当用户用一根手指触摸屏幕时，会创建一个与手指相关的UITouch对象。</li>
+<li>一根手指对应一个UITouch对象。</li>
+<li>如果两根手指同时触摸一个view，那么view只会调用一次touchesBegan:withEvent:方法，touches参数中装着2个UITouch对象。</li>
+<li>如果这两根手指一前一后分开触摸同一个view，那么view会分别调用2次touchesBegan:withEvent:方法，并且每次调用时的touches参数中只包含一个UITouch对象。</li>
+</ul>
+<h2 id="uitouch的作用">UITouch的作用</h2>
+<ul>
+<li>保存着跟手指相关的信息，比如触摸的位置、时间、阶段。</li>
+<li>当手指移动时，系统会更新同一个UITouch对象，使之能够一直保存该手指在的触摸位置。</li>
+<li>当手指离开屏幕时，系统会销毁相应的UITouch对象。</li>
+</ul>
+<h2 id="uitouch的属性">UITouch的属性</h2>
+<pre><code>触摸产生时所处的窗口
+@property(nonatomic,readonly,retain) UIWindow *window;
+
+触摸产生时所处的视图
+@property(nonatomic,readonly,retain) UIView *view
+;
+
+短时间内点按屏幕的次数，可以根据tapCount判断单击、双击或更多的点击
+@property(nonatomic,readonly) NSUInteger tapCount;
+
+记录了触摸事件产生或变化时的时间，单位是秒
+@property(nonatomic,readonly) NSTimeInterval timestamp;
+
+当前触摸事件所处的状态
+@property(nonatomic,readonly) UITouchPhase phase;
+</code></pre>
+<h2 id="uitouch的方法">UITouch的方法</h2>
+<pre><code>(CGPoint)locationInView:(UIView *)view;
+// 返回值表示触摸在view上的位置
+// 这里返回的位置是针对view的坐标系的（以view的左上角为原点(0, 0)）
+// 调用时传入的view参数为nil的话，返回的是触摸点在UIWindow的位置
+
+(CGPoint)previousLocationInView:(UIView *)view;
+// 该方法记录了前一个触摸点的位置
+</code></pre>
+<h1 id="ios中的事件的产生和传递">iOS中的事件的产生和传递</h1>
+<h2 id="事件的产生">事件的产生</h2>
+<ul>
+<li>发生触摸事件后，系统会将该事件加入到一个由UIApplication管理的事件队列中,为什么是队列而不是栈？因为队列的特点是FIFO，即先进先出，先产生的事件先处理才符合常理，所以把事件添加到队列。</li>
+<li>UIApplication会从事件队列中取出最前面的事件，并将事件分发下去以便处理，通常，先发送事件给应用程序的主窗口（keyWindow）。</li>
+<li>主窗口会在视图层次结构中找到一个最合适的视图来处理触摸事件，这也是整个事件处理过程的第一步。</li>
+<li>找到合适的视图控件后，就会调用视图控件的touches方法来作具体的事件处理。</li>
+</ul>
+<h2 id="事件的传递">事件的传递</h2>
+<ul>
+<li>触摸事件的传递是从父控件传递到子控件</li>
+<li>也就是UIApplication-&gt;window-&gt;寻找处理事件最合适的view<br>
+注 意: 如果父控件不能接受触摸事件，那么子控件就不可能接收到触摸事件，应用如何找到最合适的控件来处理事件？判断逻辑如下：</li>
+</ul>
+<ol>
+<li>首先判断主窗口（keyWindow）自己是否能接受触摸事件</li>
+<li>判断触摸点是否在自己身上</li>
+<li>子控件数组中从后往前遍历子控件，重复前面的两个步骤（所谓从后往前遍历子控件，就是首先查找子控件数组中最后一个元素，然后按照1、2步骤的方式来执行判断）</li>
+<li>找到了这个合适的View后，再遍历这个View的子控件，直至没有更合适的view为止。如果没有符合条件的子控件，那么就认为自己最合适处理。</li>
+<li>如果没有符合条件的子控件，那么就认为自己最合适处理这个事件，也就是自己是最合适的view。</li>
+<li>找到最合适的view后，就会调用该view的touches方法处理具体的事件。</li>
+</ol>
+<p>UIView不能接收触摸事件的三种情况：</p>
+<ul>
+<li>不允许交互：userInteractionEnabled = NO</li>
+<li>隐藏：如果把父控件隐藏，那么子控件也会隐藏，隐藏的控件不能接受事件</li>
+<li>透明度：如果设置一个控件的透明度&lt;0.01，会直接影响子控件的透明度。alpha：0.0~0.01为透明。</li>
+</ul>
+<p>总结一下</p>
+<ol>
+<li>点击一个UIView或产生一个触摸事件A，这个触摸事件A会被添加到由UIApplication管理的事件队列中（即，首先接收到事件的是UIApplication）。</li>
+<li>UIApplication会从事件对列中取出最前面的事件（此处假设为触摸事件A），把事件A传递给应用程序的主窗口（keyWindow）。</li>
+<li>窗口会在视图层次结构中找到一个最合适的视图来处理触摸事件。（至此，第一步已完成）</li>
+</ol>
+<p>如果想让某个view不能处理事件（或者说，事件传递到某个view那里就断了），那么可以通过刚才提到的三种方式。比如，设置其userInteractionEnabled = NO;那么传递下来的事件就会由该view的父控件处理。所以，不管视图能不能处理事件，只要点击了视图就都会产生事件，关键在于该事件最终是由谁来处理！</p>
+<p>如果设置父控件的透明度或者hidden，会直接影响到子控件的透明度和hidden。如果父控件的透明度为0或者hidden = YES，那么子控件也是不可见的！</p>
+<h2 id="如何寻找最合适的view">如何寻找最合适的View</h2>
+<p>在寻找合适的View时，怎么来判断当前的View是否合适呢？<br>
+有两个重要的方法：</p>
+<pre><code>- (nullable UIView *)hitTest:(CGPoint)point withEvent:(nullable UIEvent *)event;
+- (BOOL)pointInside:(CGPoint)point withEvent:(nullable UIEvent *)event;
+</code></pre>
+<h3 id="hittestwithevent方法">hitTest：withEvent：方法</h3>
+<p>方法的调用时机：只要事件一传递给一个控件,这个控件就会调用他自己的hitTest：withEvent：方法。<br>
+方法的作用：返回最合适的view(能够响应事件的那个最合适的view)。</p>
+<ul>
+<li>正因为hitTest：withEvent：方法可以返回最合适的view，所以可以通过重写hitTest：withEvent：方法，返回指定的view作为最合适的view。</li>
+<li>不管点击哪里，最合适的view都是hitTest：withEvent：方法中返回的那个view。</li>
+<li>通过重写hitTest：withEvent：，就可以拦截事件的传递过程，返回的View就是事件的处理者。</li>
+<li>如果hitTest:withEvent:方法中返回nil，那么调用该方法的控件本身和其子控件都不是最合适的view，也就是在自己身上没有找到更合适的view。那么最合适的view就是该控件的父控件。</li>
+<li>不管子控件是不是最合适的view，系统默认都要先把事件传递给子控件，经过子控件调用子控件自己的hitTest:withEvent:方法验证后才知道有没有更合适的view。即便父控件是最合适的view了，子控件的hitTest:withEvent:方法还是会调用，不然怎么知道有没有更合适的！即，如果确定最终父控件是最合适的view，那么该父控件的子控件的hitTest:withEvent:方法也是会被调用的。</li>
+</ul>
+<p>hit:withEvent:方法底层会调用pointInside:withEvent:方法判断点在不在方法调用者的坐标系上。</p>
+<h3 id="pointinsidewithevent方法">pointInside:withEvent:方法</h3>
+<p>方法的调用时机：调用hitTest:withEvent:方法时回调用pointInside:withEvent:方法判断点在不在方法调用者的坐标系上。<br>
+方法的作用：方法判断点在不在当前view上（方法调用者的坐标系上）如果返回YES，代表点在方法调用者的坐标系上;返回NO代表点不在方法调用者的坐标系上，那么方法调用者也就不能处理事件。</p>
+<h3 id="方法的调用关系">方法的调用关系</h3>
+<ol>
+<li>首先调用当前视图的pointInside:withEvent:方法判断触摸点是否在当前视图内。若pointInside:withEvent:方法返回NO，说明触摸点不在当前视图内，则当前视图的hitTest:withEvent:返回nil。若pointInside:withEvent:方法返回YES，说明触摸点在当前视图内，则遍历当前视图的所有子视图(subviews)，调用子视图的hitTest:withEvent:方法重复前面的步骤。子视图的遍历顺序是从top到bottom，即从subviews数组的末尾向前遍历，直到有子视图的hitTest:withEvent:方法返回非空对象或者全部子视图遍历完毕。</li>
+<li>若第一次有子视图的hitTest:withEvent:方法返回非空对象,则当前视图的hitTest:withEvent:方法就返回此对象，处理结束。若所有子视图的hitTest:withEvent:方法都返回nil，则当前视图的hitTest:withEvent:方法返回当前视图自身(self)。</li>
+<li>这个触摸事件交给主窗口的hitTest:withEvent:方法返回的视图对象去处理。</li>
+</ol>
+<h1 id="事件的响应">事件的响应</h1>
+<p>当View是合适的View，且接受到事件后，就会就进行事件的响应，而事件的响应就是调用touchBegan等方法。而这些方法的默认做法就是事件顺着响应者链条向上传递。</p>
+<h2 id="响应者链条">响应者链条</h2>
+<ul>
+<li>如果当前这个view是控制器的view,那么控制器就是上一个响应者</li>
+<li>如果当前这个view不是控制器的view,那么父控件就是上一个响应者<br>
+按照上面方法找到最上层的响应者，从而形成一个响应者的链条。</li>
+</ul>
+<h2 id="响应者链的事件传递过程">响应者链的事件传递过程:</h2>
+<ul>
+<li>如果当前view是控制器的view，那么控制器就是上一个响应者，事件就传递给控制器；如果当前view不是控制器的view，那么父视图就是当前view的上一个响应者，事件就传递给它的父视图，如果当前的响应者不能处理此事件，则就是继续上传到上一个响应者。</li>
+<li>当传到视图层次结构的最顶级视图后，如果也不能处理收到的事件或消息，则其将事件或消息传递给window对象进行处理。</li>
+<li>如果window对象也不处理，则其将事件或消息传递给UIApplication对象。</li>
+<li>如果UIApplication也不能处理该事件或消息，则将其丢弃。</li>
+</ul>
+<h1 id="总结">总结</h1>
+<p>事件处理的整个流程总结：</p>
+<ol>
+<li>触摸屏幕产生触摸事件后，触摸事件会被添加到由UIApplication管理的事件队列中（即，首先接收到事件的是UIApplication）。</li>
+<li>UIApplication会从事件队列中取出最前面的事件，把事件传递给应用程序的主窗口（keyWindow）。</li>
+<li>主窗口会在视图层次结构中找到一个最合适的视图来处理触摸事件。（至此，第一步已完成)</li>
+<li>最合适的view会调用自己的touches方法处理事件</li>
+<li>touches默认做法是把事件顺着响应者链条向上抛。</li>
+</ol>
+<p>事件的传递是从上到下（父控件到子控件），事件的响应是从下到上（顺着响应者链条向上传递：子控件到父控件）。</p>
+<p><a href="https://developer.apple.com/documentation/uikit/touches_presses_and_gestures/using_responders_and_the_responder_chain_to_handle_events">官方的文档</a></p>
+
+          
+          <p class="next-post">下一篇：
+            <a href="https://xyh44934776.github.io/post/ios-zhong-de-suo/">
+              <span class="post-title">
+                iOS中的锁&rarr;
+              </span>
+            </a>
+          </p>
+        
+        <div class="comment">
+          
+        </div>
+      </div>
+    </div>
+  </article>
+ <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <ul class="list-inline text-center">
+            
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+              <li class="list-inline-item">
+              <a href="https://xyh44934776.github.io/atom.xml" target="_blank">
+                <span class="fa-stack fa-lg">
+                  <i class="fas fa-circle fa-stack-2x"></i>
+                  <i class="fas fa-rss fa-stack-1x fa-inverse"></i>
+                </span>
+              </a>
+              </li>
+          </ul>
+          <p class="copyright text-muted">Copyright &copy;<span>Sanri&#39;s Blog</span><br><a href="https://github.com/getgridea/gridea" class="Themeinfo">Powered by Gridea</a></p>
+        </div>
+      </div>
+    </div>
+   </footer>
+  <!-- Bootstrap core JavaScript -->
+  <script src="https://cdn.bootcss.com/twitter-bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+  <!-- <script src="https://xyh44934776.github.io/media/scripts/bootstrap.bundle.min.js"></script> -->
+  <!-- Bootstrap core JavaScript -->
+  <script src="https://cdn.jsdelivr.net/gh/Alanrk/clean-cdn@1.0/scripts/clean-blog.min.js"></script>
+  <!-- <script src="https://xyh44934776.github.io/media/scripts/clean-blog.min.js"></script> -->
+  <script src="//instant.page/3.0.0" type="module" defer integrity="sha384-OeDn4XE77tdHo8pGtE1apMPmAipjoxUQ++eeJa6EtJCfHlvijigWiJpD7VDPWXV1"></script>
+  <style type="text/css">a.back_to_top{text-decoration:none;position:fixed;bottom:40px;right:30px;background:#f0f0f0;height:40px;width:40px;border-radius:50%;line-height:36px;font-size:18px;text-align:center;transition-duration:.5s;transition-propety:background-color;display:none}a.back_to_top span{color:#888}a.back_to_top:hover{cursor:pointer;background:#dfdfdf}a.back_to_top:hover span{color:#555}@media print,screen and(max-width:580px){.back_to_top{display:none!important}}</style>
+<a id="back_to_top" href="#" class="back_to_top">
+  <span>▲</span></a>
+<script>$(document).ready((function(_this) {
+    return function() {
+      var bt;
+      bt = $('#back_to_top');
+      if ($(document).width() > 480) {
+        $(window).scroll(function() {
+          var st;
+          st = $(window).scrollTop();
+          if (st > 30) {
+            return bt.css('display', 'block')
+          } else {
+            return bt.css('display', 'none')
+          }
+        });
+        return bt.click(function() {
+          $('body,html').animate({
+            scrollTop: 0
+          },
+          800);
+          return false
+        })
+      }
+    }
+  })(this));</script>
+  </body>
+</html>
+

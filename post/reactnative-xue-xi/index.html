@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta content="yes" name="apple-mobile-web-app-capable" />
+  <meta content="black" name="apple-mobile-web-app-status-bar-style" />
+  <meta name="referrer" content="never">
+  <meta name="keywords" content="">
+  <meta name="description" content="">
+  <meta name="author" content="kveln">
+  <title>ReactNative学习 | Sanri&#39;s Blog</title>
+  <link href="https://cdn.bootcss.com/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+  <!-- <link href="https://xyh44934776.github.io/media/css/bootstrap.min.css" rel="stylesheet"> -->
+  <!--  <link href="https://xyh44934776.github.io/media/css/all.min.css" rel="stylesheet" type="text/css"> -->
+  <link href="https://cdn.bootcss.com/font-awesome/5.11.2/css/all.min.css" rel="stylesheet">
+  <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+  <link rel="alternate" type="application/rss+xml" title="ReactNative学习 | Sanri&#39;s Blog » Feed" href="https://xyh44934776.github.io/atom.xml">
+  <link rel="stylesheet"href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.15.10/build/styles/androidstudio.min.css">
+  <link href="https://xyh44934776.github.io/styles/main.css" rel="stylesheet">
+  <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.15.10/build/highlight.min.js"></script>
+  <!-- <script src="https://xyh44934776.github.io/media/scripts/jquery.min.js"></script> -->
+  <script>hljs.initHighlightingOnLoad();</script>
+  
+
+    <meta property="og:description" content="ReactNative学习"/>
+    <meta property="og:url" content="https://xyh44934776.github.io/post/reactnative-xue-xi/"/>
+    <meta property="og:locale" content="zh-CN"/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:site_name" content="Sanri&#39;s Blog"/>
+  </head>
+  <body>
+  	<!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+    <div class="container">
+      <a class="navbar-brand" href="https://xyh44934776.github.io">Sanri&#39;s Blog</a>
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        Menu
+        <i class="fas fa-bars"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          
+          <li class="nav-item">
+              
+              <a class="nav-link" href="/">首页</a>
+              
+          </li>
+          
+          <li class="nav-item">
+              
+              <a class="nav-link" href="/tags">标签</a>
+              
+          </li>
+          
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!-- Page Header -->
+  <header class="masthead" style="background-image: url('https://xyh44934776.github.io/media/images/home-bg.jpg')">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="post-heading">
+          	<span class="tags">
+          	 
+        </span>
+            <h1>ReactNative学习</h1>
+            <span class="meta">
+            	Posted on
+              2020-08-12，4 min read
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Post Content -->
+  <article>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <h1 id="react-naitve-指令">React Naitve 指令</h1>
+<pre><code>react-native init MyApp --version 0.44.3
+
+npm install 安装module 
+
+react-native run-ios --simulator 'iPhone 8'
+
+npm start 开启服务
+
+npm update -g react-native-cli 更新react-native环境
+
+npm install --save react-native@0.44.3 安装指定版本的react native
+
+react-native upgrade 更新项目文件
+
+npm install realm 安装对应的库
+
+react-native link 链接对应的库
+
+npm uninstall react-native-video 删除对应的库文件
+</code></pre>
+<h1 id="reactredux">ReactRedux</h1>
+<p>Dispatch Action -&gt; reducer处理state-&gt; Provider接收到变化的State-&gt;setState（dummyState）-&gt;connect的组件触发componentWillReceiveProps-&gt;进行props判断，如果判断有变化-&gt;更新子组件props-&gt;触发子组件的Render。</p>
+<h1 id="flatlist遇到的问题">FlatList遇到的问题</h1>
+<p>上拉加载会触发 onEndReached</p>
+<p>FlatList触发onEndReached的时机是：<br>
+1._onContentSizeChange<br>
+2._onScroll<br>
+3._onLayout</p>
+<p>现象是上拉加载会触发两次onEndReached<br>
+排除了1，3，因此是上拉加载时触发了两次_onScroll<br>
+（_onScroll时ScrollView的回调函数，只要滑动则调用。）</p>
+<p>onEndReached被包了一层（_maybeCallOnEndReached），因此从源码看出是有条件的被触发<br>
+<img src="https://xyh44934776.github.io/post-images/1597209975417.png" alt="" loading="lazy"></p>
+<p>现在解释上拉加载触发两次onEndReached的原因：<br>
+上拉加载----&gt;触发_onScroll----&gt;满足条件----&gt;触发onEndReached（在此时页面仍然是被滑动的，因此仍然会触发_onScroll）----&gt;同时又满足条件----&gt;又触发了onEndReacher</p>
+<p>再解释一下，代码如下时上拉加载会触发一次onEndReached的原因<br>
+<img src="https://xyh44934776.github.io/post-images/1597209981314.png" alt="" loading="lazy"></p>
+<p>上拉加载----&gt;触发_onScroll----&gt;满足条件----&gt;触发onEndReached（在此时页面仍然是被滑动的，因此仍然会触发_onScroll）----&gt;而此时条件是不被满足的，因此不会触发onEndReacher</p>
+<p>那满足的onEndReacher的条件是什么？<br>
+<img src="https://xyh44934776.github.io/post-images/1597209986897.png" alt="" loading="lazy"></p>
+<p>经过调试发现，this._hasDataChangedSinceEndReached是导致两次现象不同的变量。<br>
+<img src="https://xyh44934776.github.io/post-images/1597209992416.png" alt="" loading="lazy"></p>
+<p>可以看到这个变量在componentWillReceiveProps的时候被赋值，因此是在网络请求后，FlatList的datesource会被改变，因此可以满足触发onEndReacher的条件，而触发一次onEndReacher的原因是，在网络请求后，数据没有被更新，这个变量为false，因此不满足条件。</p>
+<p>解决方案：</p>
+<p>现在目前的触发场景：上拉加载----&gt;触发_onScroll----&gt;满足条件----&gt;触发onEndReached（在此时页面仍然是被滑动的，因此仍然会触发_onScroll）----&gt;同时又满足条件----&gt;又触发了onEndReacher，因此只要切段第二次的满足条件，即可。原理就是加状态位控制。</p>
+<h1 id="reactnative-颜色写法">ReactNative 颜色写法</h1>
+<p>以下这些格式的颜色代码都是支持的：</p>
+<ul>
+<li>'#f0f' (#rgb)</li>
+<li>'#f0fc' (#rgba)</li>
+<li>'#ff00ff' (#rrggbb)</li>
+<li>'#ff00ff00' (#rrggbbaa)</li>
+<li>'rgb(255, 255, 255)'</li>
+<li>'rgba(255, 255, 255, 1.0)'</li>
+<li>'hsl(360, 100%, 100%)'</li>
+<li>'hsla(360, 100%, 100%, 1.0)'</li>
+<li>'transparent'</li>
+<li>'red'</li>
+<li>0xff00ff00 (0xrrggbbaa)</li>
+</ul>
+<h1 id="flux-redux">Flux &amp;&amp; Redux</h1>
+<p><img src="https://xyh44934776.github.io/post-images/1597210000932.png" alt="" loading="lazy"><br>
+Store 就是保存数据的地方，你可以把它看成一个容器。整个应用只能有一个 Store。</p>
+<p><img src="https://xyh44934776.github.io/post-images/1597210005698.png" alt="" loading="lazy"><br>
+Redux 规定， 一个 State 对应一个 View。只要 State 相同，View 就相同。你知道 State，就知道 View 是什么样，反之亦然。<br>
+Action 描述当前发生的事情。改变 State 的唯一办法，就是使用 Action。它会运送数据到 Store。<br>
+store.dispatch()是 View 发出 Action 的唯一方法<br>
+Store 收到 Action 以后，必须给出一个新的 State，这样 View 才会发生变化。这种 State 的计算过程就叫做 Reducer。</p>
+
+          
+          <p class="next-post">下一篇：
+            <a href="https://xyh44934776.github.io/post/python-xue-xi/">
+              <span class="post-title">
+                Python学习&rarr;
+              </span>
+            </a>
+          </p>
+        
+        <div class="comment">
+          
+        </div>
+      </div>
+    </div>
+  </article>
+ <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <ul class="list-inline text-center">
+            
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+              <li class="list-inline-item">
+              <a href="https://xyh44934776.github.io/atom.xml" target="_blank">
+                <span class="fa-stack fa-lg">
+                  <i class="fas fa-circle fa-stack-2x"></i>
+                  <i class="fas fa-rss fa-stack-1x fa-inverse"></i>
+                </span>
+              </a>
+              </li>
+          </ul>
+          <p class="copyright text-muted">Copyright &copy;<span>Sanri&#39;s Blog</span><br><a href="https://github.com/getgridea/gridea" class="Themeinfo">Powered by Gridea</a></p>
+        </div>
+      </div>
+    </div>
+   </footer>
+  <!-- Bootstrap core JavaScript -->
+  <script src="https://cdn.bootcss.com/twitter-bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+  <!-- <script src="https://xyh44934776.github.io/media/scripts/bootstrap.bundle.min.js"></script> -->
+  <!-- Bootstrap core JavaScript -->
+  <script src="https://cdn.jsdelivr.net/gh/Alanrk/clean-cdn@1.0/scripts/clean-blog.min.js"></script>
+  <!-- <script src="https://xyh44934776.github.io/media/scripts/clean-blog.min.js"></script> -->
+  <script src="//instant.page/3.0.0" type="module" defer integrity="sha384-OeDn4XE77tdHo8pGtE1apMPmAipjoxUQ++eeJa6EtJCfHlvijigWiJpD7VDPWXV1"></script>
+  <style type="text/css">a.back_to_top{text-decoration:none;position:fixed;bottom:40px;right:30px;background:#f0f0f0;height:40px;width:40px;border-radius:50%;line-height:36px;font-size:18px;text-align:center;transition-duration:.5s;transition-propety:background-color;display:none}a.back_to_top span{color:#888}a.back_to_top:hover{cursor:pointer;background:#dfdfdf}a.back_to_top:hover span{color:#555}@media print,screen and(max-width:580px){.back_to_top{display:none!important}}</style>
+<a id="back_to_top" href="#" class="back_to_top">
+  <span>▲</span></a>
+<script>$(document).ready((function(_this) {
+    return function() {
+      var bt;
+      bt = $('#back_to_top');
+      if ($(document).width() > 480) {
+        $(window).scroll(function() {
+          var st;
+          st = $(window).scrollTop();
+          if (st > 30) {
+            return bt.css('display', 'block')
+          } else {
+            return bt.css('display', 'none')
+          }
+        });
+        return bt.click(function() {
+          $('body,html').animate({
+            scrollTop: 0
+          },
+          800);
+          return false
+        })
+      }
+    }
+  })(this));</script>
+  </body>
+</html>
+
