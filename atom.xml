@@ -2,13 +2,36 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://xyh44934776.github.io</id>
     <title>Sanri&apos;s Blog</title>
-    <updated>2021-02-18T01:52:14.748Z</updated>
+    <updated>2022-02-23T08:10:05.988Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://xyh44934776.github.io"/>
     <link rel="self" href="https://xyh44934776.github.io/atom.xml"/>
     <logo>https://xyh44934776.github.io/images/avatar.png</logo>
     <icon>https://xyh44934776.github.io/favicon.ico</icon>
-    <rights>All rights reserved 2021, Sanri&apos;s Blog</rights>
+    <rights>All rights reserved 2022, Sanri&apos;s Blog</rights>
+    <entry>
+        <title type="html"><![CDATA[Vue项目启动后的入口]]></title>
+        <id>https://xyh44934776.github.io/post/vue-xiang-mu-qi-dong-hou-de-ru-kou/</id>
+        <link href="https://xyh44934776.github.io/post/vue-xiang-mu-qi-dong-hou-de-ru-kou/">
+        </link>
+        <updated>2022-02-23T08:03:56.000Z</updated>
+        <content type="html"><![CDATA[<h4 id="背景">背景</h4>
+<p>最近一直在学Vue，因为突然被转到了前端的项目。作为一个iOS开发，突然上手Vue项目还是有点不知所措的。在一系列装环境、运行、调试等操作后，项目终于运行了。在终端输出里也出现地址。打开浏览器输入地址后，出现了登录页面。可是看了工程目录后，发现目录中只有一个index.html。所以就引入一个问题，在工程跑起来后，是怎么找到index.html这个文件呢。</p>
+<img src="https://raw.githubusercontent.com/xyh44934776/oss/master/uPic/YUoA9i.png" style="zoom: 50%;" />
+<h4 id="vue-cli">vue-cli</h4>
+<p>经过我各种百度、谷歌。发现大家的问题都是在问App.vue、main.js、index.html的关系。并没有直接说明为什么入口是index.html。从解答也能看出来，首先vue项目是运行在vue-cli(command line interface)上，从官方文档上看，vue-cli是基于 webpack 构建的。并带有一些默认webpack配置。而项目运行后的首页，也就是index.html和工程里的index.html是不同的。工程里的index.html只是一个模版，通过webpack中的一个plugin(html-webpack-plugin)把作为入口的main.js文件(main.js文件里会有调用用App.vue里的代码)注入到了工程里的index.html文件中。工程中的index.html作为一个模版是可以更改的。在<code>vue.config.js</code>中可以通过配置webpack的plugin配置来设置template路径。</p>
+<p>总结:vue-cli是基于webpack的。通过vue-cli中的html-webpack-plugin，可以将项目中的App.vue、main.js、index.html关联起来，生成一个index.html。而工程运行后，浏览器显示的html也就是这个生成的index.html。</p>
+<img src="https://raw.githubusercontent.com/xyh44934776/oss/master/uPic/HsVbfz.png" style="zoom:50%;" />
+<img src="https://raw.githubusercontent.com/xyh44934776/oss/master/uPic/rw7klc.png" style="zoom: 33%;" />
+<img src="https://raw.githubusercontent.com/xyh44934776/oss/master/uPic/lsQrDW.png" style="zoom:33%;" />
+<h4 id="webpack-dev-server">webpack-dev-server</h4>
+<p>现在知道了项目运行后的入口index.html的来源，可是为什么浏览器输入后地址后，会跳到index.html中呢？</p>
+<p>其实这是分为两种情况。第一个种情况是，vue项目进行打包后。打包后会生成dist文件夹。这个dist文件夹内有index.html。当dist文件夹被部署后，浏览器会跳转到index.html这个都是有服务器配置来决定。比如Nginx，Apache等。第二种是常见的情况，就是本地调试。之所以会跳转到index.html，是因为vue-cli中用了webpack-dev-server。而正是这个webpack-dev-server在本地启动了服务类似Nginx、Apach这种服务器。webpack-dev-server默认配置会启动项目中的index.html。如果需要配置在<code>vue.config.js</code>中进行配置就可以。</p>
+<p>总结:在执行完<code>npm run server</code>后，vue-cli会通过webpack-dev-server在后台创建一个服务。当在浏览器器输入地址后，这个服务会收到请求，将本地目录中的index.html(此时的index.html已经是经过html-webpack-plugin处理生成的index.html)返回给浏览器，浏览器收到返回的index.html后进行渲染。</p>
+<img src="https://raw.githubusercontent.com/xyh44934776/oss/master/uPic/4nb6Gk.png" style="zoom:50%;" />
+<img src="https://raw.githubusercontent.com/xyh44934776/oss/master/uPic/uRU5WE.png" style="zoom:33%;" />
+<img src="https://raw.githubusercontent.com/xyh44934776/oss/master/uPic/jcEZNd.png" style="zoom:33%;" />]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Https理解]]></title>
         <id>https://xyh44934776.github.io/post/https-li-jie/</id>
@@ -328,21 +351,6 @@ HTTP连接最显著的特点是客户端发送的每次请求都需要服务器�
 1）在HTTP 1.0中，客户端的每次请求都要求建立一次单独的连接，在处理完本次请求后，就自动释放连接。<br>
 2）在HTTP 1.1中则可以在一次连接中处理多个请求，并且多个请求可以重叠进行，不需要等待一个请求结束后再发送下一个请求。<br>
 由于HTTP在每次请求结束后都会主动释放连接，因此HTTP连接是一种“短连接”，要保持客户端程序的在线状态，需要不断地向服务器发起连接请求。通常的 做法是即时不需要获得任何数据，客户端也保持每隔一段固定的时间向服务器发送一次“保持连接”的请求，服务器在收到该请求后对客户端进行回复，表明知道客户端“在线”。若服务器长时间无法收到客户端的请求，则认为客户端“下线”，若客户端长时间无法收到服务器的回复，则认为网络已经断开。</p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Node杂项]]></title>
-        <id>https://xyh44934776.github.io/post/node-za-xiang/</id>
-        <link href="https://xyh44934776.github.io/post/node-za-xiang/">
-        </link>
-        <updated>2020-08-12T05:23:35.000Z</updated>
-        <content type="html"><![CDATA[<h1 id="module">Module</h1>
-<p>在 Node.js 模块系统中，每个文件都视为独立的模块。<br>
-在每个模块中，module 的自由变量是一个指向表示当前模块的对象的引用。 为了方便，module.exports 也可以通过全局模块的 exports 对象访问。 module 实际上不是全局的，而是每个模块本地的。实际上总会执行module.exports = exports</p>
-<h1 id="utilinherits">util.inherits</h1>
-<p>util.inherits(constructor, superConstructor)是一个实现对象间原型继承 的函数。<br>
-JavaScript 的面向对象特性是基于原型的，与常见的基于类的不同。JavaScript 没有 提供对象继承的语言级别特性，而是通过原型复制来实现的。</p>
-<p>继承只能继承在原型中定义的函数，而构造函数内部是不被继承的。</p>
 ]]></content>
     </entry>
 </feed>
