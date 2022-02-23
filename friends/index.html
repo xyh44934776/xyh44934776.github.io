@@ -1,10 +1,11 @@
 <html>
+
 <head>
     <meta charset="utf-8" />
 <meta name="description" content="" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-<title>iOS中的动画 | Sanri&#39;s Blog</title>
+<title>友情链接 | Sanri&#39;s Blog</title>
 
 <link rel="shortcut icon" href="http://localhost:4000/favicon.ico?v=1645605853221">
 
@@ -25,11 +26,12 @@
 
 
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.css">
 </head>
+
 <body>
 <div class="main gt-bg-theme-color-first">
-    <nav class="navbar navbar-expand-lg">
+        <div class="main-content">
+            <nav class="navbar navbar-expand-lg">
     <a class="navbar-brand" href="/">
         <img class="user-avatar" src="/images/avatar.png" alt="头像">
         <div class="site-name gt-c-content-color-first">
@@ -73,44 +75,28 @@
     }
 </script>
 
-    <div class="post-container">
-        <div class="post-detail gt-bg-theme-color-second">
-            <article class="gt-post-content">
-                <h2 class="post-title">
-                    iOS中的动画
-                </h2>
-                <div class="post-info">
-                    <time class="post-time gt-c-content-color-first">
-                        · 2020-08-12 ·
-                    </time>
-                    
+            <div class="post-container">
+                <div class="post-detail">
+                    <article>
+                        <!-- <div class="post-content-wrapper"> -->
+                            <div class="post-content">
+                                <div class="friends-desc">
+                                    
+                                </div>
+                                <h3 id="linklist">友链列表</h3>
+                                
+                                    
+                                
+                            </div>
+                        <!-- </div> -->
+                    </article>
                 </div>
-                <div class="post-content">
-                    <p>之前整理了iOS的动画种类，后面会每个在学习一下。先把结构图传上来。<br>
-<img src="http://localhost:4000/post-images/1597209193193.jpg" alt="" loading="lazy"></p>
-<h1 id="layer的渲染架构">Layer的渲染架构</h1>
-<p>Layer也和View一样存在着一个层级树状结构,称之为图层树(Layer Tree),直接创建的或者通过UIView获得的(view.layer)用于显示的图层树,称之为模型树(Model Tree),模型树的背后还存在两份图层树的拷贝,一个是呈现树(Presentation Tree),一个是渲染树(Render Tree). 呈现树可以通过普通layer(其实就是模型树)的layer.presentationLayer获得,而模型树则可以通过modelLayer属性获得(详情文档).模型树的属性在其被修改的时候就变成了新的值,这个是可以用代码直接操控的部分;呈现树的属性值和动画运行过程中界面上看到的是一致的.而渲染树是私有的,你无法访问到,渲染树是对呈现树的数据进行渲染,为了不阻塞主线程,渲染的过程是在单独的进程或线程中进行的,所以你会发现Animation的动画并不会阻塞主线程。</p>
-
-                </div>
-            </article>
-        </div>
-
-        
-            <div class="next-post">
-                <div class="next gt-c-content-color-first">下一篇</div>
-                <a href="http://localhost:4000/post/ios-za-xiang/" class="post-title gt-a-link">
-                    iOS杂项
-                </a>
+                
             </div>
-        
 
-        
 
-        
 
-        
-
-        <div class="site-footer gt-c-content-color-first">
+            <div class="site-footer gt-c-content-color-first">
     <div class="slogan gt-c-content-color-first"></div>
     <div class="social-container">
         
@@ -140,7 +126,8 @@
   hljs.highlightAll()
 </script>
 
+        </div>
     </div>
-</div>
 </body>
+
 </html>

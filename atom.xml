@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-    <id>https://xyh44934776.github.io</id>
+    <id>http://localhost:4000</id>
     <title>Sanri&apos;s Blog</title>
-    <updated>2022-02-23T08:10:05.988Z</updated>
+    <updated>2022-02-23T08:44:14.590Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
-    <link rel="alternate" href="https://xyh44934776.github.io"/>
-    <link rel="self" href="https://xyh44934776.github.io/atom.xml"/>
-    <logo>https://xyh44934776.github.io/images/avatar.png</logo>
-    <icon>https://xyh44934776.github.io/favicon.ico</icon>
+    <link rel="alternate" href="http://localhost:4000"/>
+    <link rel="self" href="http://localhost:4000/atom.xml"/>
+    <logo>http://localhost:4000/images/avatar.png</logo>
+    <icon>http://localhost:4000/favicon.ico</icon>
     <rights>All rights reserved 2022, Sanri&apos;s Blog</rights>
     <entry>
         <title type="html"><![CDATA[Vue项目启动后的入口]]></title>
-        <id>https://xyh44934776.github.io/post/vue-xiang-mu-qi-dong-hou-de-ru-kou/</id>
-        <link href="https://xyh44934776.github.io/post/vue-xiang-mu-qi-dong-hou-de-ru-kou/">
+        <id>http://localhost:4000/post/vue-xiang-mu-qi-dong-hou-de-ru-kou/</id>
+        <link href="http://localhost:4000/post/vue-xiang-mu-qi-dong-hou-de-ru-kou/">
         </link>
         <updated>2022-02-23T08:03:56.000Z</updated>
         <content type="html"><![CDATA[<h4 id="背景">背景</h4>
@@ -34,8 +34,8 @@
     </entry>
     <entry>
         <title type="html"><![CDATA[Https理解]]></title>
-        <id>https://xyh44934776.github.io/post/https-li-jie/</id>
-        <link href="https://xyh44934776.github.io/post/https-li-jie/">
+        <id>http://localhost:4000/post/https-li-jie/</id>
+        <link href="http://localhost:4000/post/https-li-jie/">
         </link>
         <updated>2021-02-18T01:25:56.000Z</updated>
         <content type="html"><![CDATA[<p>HPPTS是HTTP+SSL/TLS的简称<br>
@@ -53,8 +53,8 @@ Hash算法：MD5、SHA1、SHA256</p>
     </entry>
     <entry>
         <title type="html"><![CDATA[重装电脑后配置环境]]></title>
-        <id>https://xyh44934776.github.io/post/chong-zhuang-dian-nao-hou-pei-zhi-huan-jing/</id>
-        <link href="https://xyh44934776.github.io/post/chong-zhuang-dian-nao-hou-pei-zhi-huan-jing/">
+        <id>http://localhost:4000/post/chong-zhuang-dian-nao-hou-pei-zhi-huan-jing/</id>
+        <link href="http://localhost:4000/post/chong-zhuang-dian-nao-hou-pei-zhi-huan-jing/">
         </link>
         <updated>2021-02-18T01:23:32.000Z</updated>
         <content type="html"><![CDATA[<p>1.Xcode</p>
@@ -77,8 +77,8 @@ pbcopy &lt; ~/.ssh/id_rsa.pub</p>
     </entry>
     <entry>
         <title type="html"><![CDATA[Block]]></title>
-        <id>https://xyh44934776.github.io/post/block/</id>
-        <link href="https://xyh44934776.github.io/post/block/">
+        <id>http://localhost:4000/post/block/</id>
+        <link href="http://localhost:4000/post/block/">
         </link>
         <updated>2021-02-18T01:20:58.000Z</updated>
         <content type="html"><![CDATA[<h1 id="block在内存上的分配">Block在内存上的分配</h1>
@@ -105,12 +105,12 @@ pbcopy &lt; ~/.ssh/id_rsa.pub</p>
     </entry>
     <entry>
         <title type="html"><![CDATA[Xcode-select]]></title>
-        <id>https://xyh44934776.github.io/post/xcode-select/</id>
-        <link href="https://xyh44934776.github.io/post/xcode-select/">
+        <id>http://localhost:4000/post/xcode-select/</id>
+        <link href="http://localhost:4000/post/xcode-select/">
         </link>
         <updated>2020-08-12T05:29:59.000Z</updated>
         <content type="html"><![CDATA[<p>我们的Xcode使用版本可以根据Xcode &gt; Preferences &gt; Locations路径查看到正在使用的版本和该版本路径。<br>
-<img src="https://xyh44934776.github.io/post-images/1597210228623.png" alt="" loading="lazy"><br>
+<img src="http://localhost:4000/post-images/1597210228623.png" alt="" loading="lazy"><br>
 在终端xcode-select可使用的命令如下:</p>
 <pre><code>xcode-select [-h, –help] 
 xcode-select [-p, –print-path] 
@@ -142,8 +142,8 @@ sudo xcode-select -s /Applications/Xcode.app/Contents/Developer
     </entry>
     <entry>
         <title type="html"><![CDATA[Runtime应用]]></title>
-        <id>https://xyh44934776.github.io/post/runtime-ying-yong/</id>
-        <link href="https://xyh44934776.github.io/post/runtime-ying-yong/">
+        <id>http://localhost:4000/post/runtime-ying-yong/</id>
+        <link href="http://localhost:4000/post/runtime-ying-yong/">
         </link>
         <updated>2020-08-12T05:29:03.000Z</updated>
         <content type="html"><![CDATA[<h1 id="方法交换">方法交换</h1>
@@ -189,23 +189,23 @@ static char key;
     </entry>
     <entry>
         <title type="html"><![CDATA[Runtime学习]]></title>
-        <id>https://xyh44934776.github.io/post/runtime-xue-xi/</id>
-        <link href="https://xyh44934776.github.io/post/runtime-xue-xi/">
+        <id>http://localhost:4000/post/runtime-xue-xi/</id>
+        <link href="http://localhost:4000/post/runtime-xue-xi/">
         </link>
         <updated>2020-08-12T05:26:50.000Z</updated>
-        <content type="html"><![CDATA[<p><img src="https://xyh44934776.github.io/post-images/1597210033738.png" alt="" loading="lazy"><br>
+        <content type="html"><![CDATA[<p><img src="http://localhost:4000/post-images/1597210033738.png" alt="" loading="lazy"><br>
 类本身是一个描述, 描述里包含实例化这个类需要多大的内存, 以及内存的每个byte是什么内容, 这个内容的头部是一个isa, 其他内容是ivar的值或指针.<br>
 对象是按类的描述所从内存空间里面开辟出对应大小的空间并填充isa指针(alloc), 类的初始化方法往这个空间里的byte里面存初始化的内容.</p>
 <p>实例化的对象本质是<br>
-<img src="https://xyh44934776.github.io/post-images/1597210039302.png" alt="" loading="lazy"></p>
+<img src="http://localhost:4000/post-images/1597210039302.png" alt="" loading="lazy"></p>
 <p>iOS中所有类都继承NSObject<br>
-<img src="https://xyh44934776.github.io/post-images/1597210113392.png" alt="" loading="lazy"><br>
+<img src="http://localhost:4000/post-images/1597210113392.png" alt="" loading="lazy"><br>
 NSObject 是一个包含着isa指针的类<br>
 那NSObject又是什么呢？<br>
-<img src="https://xyh44934776.github.io/post-images/1597210118792.png" alt="" loading="lazy"><br>
+<img src="http://localhost:4000/post-images/1597210118792.png" alt="" loading="lazy"><br>
 可以看到，根据苹果官方的注释，只要符合objc_object的结构即是一个对象，因此可以这么理解，只要是包含isa（Class类型）的结构体指针他就是一个对象。</p>
 <p>根据注释发现Class代表着一个类，而NSObject就是一个Class，而Class类型是objc_class。<br>
-<img src="https://xyh44934776.github.io/post-images/1597210139976.png" alt="" loading="lazy"></p>
+<img src="http://localhost:4000/post-images/1597210139976.png" alt="" loading="lazy"></p>
 <p>可以看到objc_class也拥有着isa（Class类型），因此可以导出NSObject是一个Class，而Class是一个对象，因此NSObject是一个对象。<br>
 同理按照定义，只要类型是一个包含isa（Class类型）的结构体指针，那么它就是一个对象。</p>
 <p>一个NSObject对象占用多少内存？<br>
@@ -214,8 +214,8 @@ NSObject 是一个包含着isa指针的类<br>
     </entry>
     <entry>
         <title type="html"><![CDATA[ReactNative学习]]></title>
-        <id>https://xyh44934776.github.io/post/reactnative-xue-xi/</id>
-        <link href="https://xyh44934776.github.io/post/reactnative-xue-xi/">
+        <id>http://localhost:4000/post/reactnative-xue-xi/</id>
+        <link href="http://localhost:4000/post/reactnative-xue-xi/">
         </link>
         <updated>2020-08-12T05:25:45.000Z</updated>
         <content type="html"><![CDATA[<h1 id="react-naitve-指令">React Naitve 指令</h1>
@@ -251,16 +251,16 @@ npm uninstall react-native-video 删除对应的库文件
 排除了1，3，因此是上拉加载时触发了两次_onScroll<br>
 （_onScroll时ScrollView的回调函数，只要滑动则调用。）</p>
 <p>onEndReached被包了一层（_maybeCallOnEndReached），因此从源码看出是有条件的被触发<br>
-<img src="https://xyh44934776.github.io/post-images/1597209975417.png" alt="" loading="lazy"></p>
+<img src="http://localhost:4000/post-images/1597209975417.png" alt="" loading="lazy"></p>
 <p>现在解释上拉加载触发两次onEndReached的原因：<br>
 上拉加载----&gt;触发_onScroll----&gt;满足条件----&gt;触发onEndReached（在此时页面仍然是被滑动的，因此仍然会触发_onScroll）----&gt;同时又满足条件----&gt;又触发了onEndReacher</p>
 <p>再解释一下，代码如下时上拉加载会触发一次onEndReached的原因<br>
-<img src="https://xyh44934776.github.io/post-images/1597209981314.png" alt="" loading="lazy"></p>
+<img src="http://localhost:4000/post-images/1597209981314.png" alt="" loading="lazy"></p>
 <p>上拉加载----&gt;触发_onScroll----&gt;满足条件----&gt;触发onEndReached（在此时页面仍然是被滑动的，因此仍然会触发_onScroll）----&gt;而此时条件是不被满足的，因此不会触发onEndReacher</p>
 <p>那满足的onEndReacher的条件是什么？<br>
-<img src="https://xyh44934776.github.io/post-images/1597209986897.png" alt="" loading="lazy"></p>
+<img src="http://localhost:4000/post-images/1597209986897.png" alt="" loading="lazy"></p>
 <p>经过调试发现，this._hasDataChangedSinceEndReached是导致两次现象不同的变量。<br>
-<img src="https://xyh44934776.github.io/post-images/1597209992416.png" alt="" loading="lazy"></p>
+<img src="http://localhost:4000/post-images/1597209992416.png" alt="" loading="lazy"></p>
 <p>可以看到这个变量在componentWillReceiveProps的时候被赋值，因此是在网络请求后，FlatList的datesource会被改变，因此可以满足触发onEndReacher的条件，而触发一次onEndReacher的原因是，在网络请求后，数据没有被更新，这个变量为false，因此不满足条件。</p>
 <p>解决方案：</p>
 <p>现在目前的触发场景：上拉加载----&gt;触发_onScroll----&gt;满足条件----&gt;触发onEndReached（在此时页面仍然是被滑动的，因此仍然会触发_onScroll）----&gt;同时又满足条件----&gt;又触发了onEndReacher，因此只要切段第二次的满足条件，即可。原理就是加状态位控制。</p>
@@ -280,9 +280,9 @@ npm uninstall react-native-video 删除对应的库文件
 <li>0xff00ff00 (0xrrggbbaa)</li>
 </ul>
 <h1 id="flux-redux">Flux &amp;&amp; Redux</h1>
-<p><img src="https://xyh44934776.github.io/post-images/1597210000932.png" alt="" loading="lazy"><br>
+<p><img src="http://localhost:4000/post-images/1597210000932.png" alt="" loading="lazy"><br>
 Store 就是保存数据的地方，你可以把它看成一个容器。整个应用只能有一个 Store。</p>
-<p><img src="https://xyh44934776.github.io/post-images/1597210005698.png" alt="" loading="lazy"><br>
+<p><img src="http://localhost:4000/post-images/1597210005698.png" alt="" loading="lazy"><br>
 Redux 规定， 一个 State 对应一个 View。只要 State 相同，View 就相同。你知道 State，就知道 View 是什么样，反之亦然。<br>
 Action 描述当前发生的事情。改变 State 的唯一办法，就是使用 Action。它会运送数据到 Store。<br>
 store.dispatch()是 View 发出 Action 的唯一方法<br>
@@ -291,26 +291,26 @@ Store 收到 Action 以后，必须给出一个新的 State，这样 View 才会
     </entry>
     <entry>
         <title type="html"><![CDATA[Python学习]]></title>
-        <id>https://xyh44934776.github.io/post/python-xue-xi/</id>
-        <link href="https://xyh44934776.github.io/post/python-xue-xi/">
+        <id>http://localhost:4000/post/python-xue-xi/</id>
+        <link href="http://localhost:4000/post/python-xue-xi/">
         </link>
         <updated>2020-08-12T05:24:35.000Z</updated>
-        <content type="html"><![CDATA[<figure data-type="image" tabindex="1"><img src="https://xyh44934776.github.io/post-images/1597209904341.png" alt="" loading="lazy"></figure>
+        <content type="html"><![CDATA[<figure data-type="image" tabindex="1"><img src="http://localhost:4000/post-images/1597209904341.png" alt="" loading="lazy"></figure>
 <h1 id="python2-中文编码">Python2 中文编码</h1>
 <p><code>#coding=utf-8</code></p>
-<p><img src="https://xyh44934776.github.io/post-images/1597209915056.png" alt="" loading="lazy"><br>
-<img src="https://xyh44934776.github.io/post-images/1597209919558.png" alt="" loading="lazy"><br>
-<img src="https://xyh44934776.github.io/post-images/1597209923355.png" alt="" loading="lazy"><br>
-<img src="https://xyh44934776.github.io/post-images/1597209928226.png" alt="" loading="lazy"><br>
-<img src="https://xyh44934776.github.io/post-images/1597209933575.png" alt="" loading="lazy"><br>
-<img src="https://xyh44934776.github.io/post-images/1597209937592.png" alt="" loading="lazy"><br>
-<img src="https://xyh44934776.github.io/post-images/1597209941274.png" alt="" loading="lazy"></p>
+<p><img src="http://localhost:4000/post-images/1597209915056.png" alt="" loading="lazy"><br>
+<img src="http://localhost:4000/post-images/1597209919558.png" alt="" loading="lazy"><br>
+<img src="http://localhost:4000/post-images/1597209923355.png" alt="" loading="lazy"><br>
+<img src="http://localhost:4000/post-images/1597209928226.png" alt="" loading="lazy"><br>
+<img src="http://localhost:4000/post-images/1597209933575.png" alt="" loading="lazy"><br>
+<img src="http://localhost:4000/post-images/1597209937592.png" alt="" loading="lazy"><br>
+<img src="http://localhost:4000/post-images/1597209941274.png" alt="" loading="lazy"></p>
 ]]></content>
     </entry>
     <entry>
         <title type="html"><![CDATA[OSI模型]]></title>
-        <id>https://xyh44934776.github.io/post/osi-mo-xing/</id>
-        <link href="https://xyh44934776.github.io/post/osi-mo-xing/">
+        <id>http://localhost:4000/post/osi-mo-xing/</id>
+        <link href="http://localhost:4000/post/osi-mo-xing/">
         </link>
         <updated>2020-08-12T05:24:00.000Z</updated>
         <content type="html"><![CDATA[<p>OSI是一个试图使各种计算机在世界范围内互连为网络的标准框架，它将网络体系划分为7层，分为：<br>
@@ -327,9 +327,9 @@ Store 收到 Action 以后，必须给出一个新的 State，这样 View 才会
 3.传输层<br>
 2.网络互联层<br>
 1.网络接口层<br>
-<img src="https://xyh44934776.github.io/post-images/1597209867955.jpg" alt="" loading="lazy"></p>
+<img src="http://localhost:4000/post-images/1597209867955.jpg" alt="" loading="lazy"></p>
 <p>TCP/IP协议簇包含了以下比较常见的协议<br>
-<img src="https://xyh44934776.github.io/post-images/1597209872120.png" alt="" loading="lazy"></p>
+<img src="http://localhost:4000/post-images/1597209872120.png" alt="" loading="lazy"></p>
 <p>下面就按照每一层的顺序来讲一下常见的协议：</p>
 <p>物理层：也就是实体层，为传输数据所需要的物理链路创建、维持、拆除，而提供具有机械的，电子的，功能的和规范的特性。简单的说，物理层确保原始的数据可在各种物理媒体上传输。规定了网络的一些电气特性，作用是负责传送0和1的电信号。</p>
 <p>数据链路层：在实体层中定义了电信号，而链路层则是将这些电信号进行规范，Ethernet协议规定，一组电信号构成一个数据包，叫&quot;帧&quot;（Frame）。每一帧分成两个部分：标头（Head）和数据（Data），而标头里又包含数据包的一些说明项，比如发送者、接受者、数据类型等等；&quot;数据&quot;则是数据包的具体内容。发送者和接受者又通过MAC（Media Access Control）地址来标识，MAC地址是48个二进制位构成，可以标识网卡的唯一性。可以简单的说数据链路层的协议确定了MAC地址，有了MAC地址，发送端又会通过广播（Broadcast）方式向网络内所有的计算机发送数据，每台计算通过判断数据包里的MAC地址是否符合选择是否接受。</p>
